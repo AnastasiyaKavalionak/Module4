@@ -7,7 +7,7 @@ const chrome = require('selenium-webdriver/chrome');
 const By = webdriver.By;
 const until = webdriver.until;
 
-const menuTabs = ['Home', 'Blog', 'Events', 'The Author', 'The Society', 'Membership', 'Contact Us', 'Press'];
+const MENUTABS = ['Home', 'Blog', 'Events', 'The Author', 'The Society', 'Membership', 'Contact Us', 'Press'];
 const driver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
 
 describe('checking menu tabs', function () {
@@ -19,13 +19,13 @@ describe('checking menu tabs', function () {
         let menu = driver.findElements(By.css('ul#menu-main-menu > li > a'));
         expect(menu.then(menuLinks => {
             let check = menuLinks.filter(function (link) {
-                return menuTabs.some(function (menuTab) {
+                return MENUTABS.some(function (menuTab) {
                     return link.getAttribute('innerHTML').then(result => {
                         return result === menuTab;
                     });
                 });
             });
-            if (check.length === menuTabs.length) {
+            if (check.length === MENUTABS.length) {
                 console.log('menu of full size is right');
                 return true;
             } else {
@@ -44,13 +44,13 @@ describe('checking menu tabs', function () {
         let menu = driver.findElements(By.css('ul#menu-main-menu > li > a'));
         menu.then(menuLinks => {
             let check = menuLinks.filter(function (link) {
-                return menuTabs.some(function (menuTab) {
+                return MENUTABS.some(function (menuTab) {
                     return link.getAttribute('innerHTML').then(result => {
                         return result === menuTab;
                     });
                 });
             });
-            if (check.length === menuTabs.length) {
+            if (check.length === MENUTABS.length) {
                 console.log('menu of full size is right');
                 return true;
             } else {
@@ -59,8 +59,7 @@ describe('checking menu tabs', function () {
             }
         }).then(resultOfChecking => {
             if (resultOfChecking) {
-                console.log('start clicking');
-                menuTabs.map(function (tab) {
+                MENUTABS.map(function (tab) {
                     menu.then(menuLinks => {
                         menuLinks.map(function (link) {
                             link.getAttribute('innerHTML').then(result => {
