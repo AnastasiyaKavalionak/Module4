@@ -1,0 +1,15 @@
+{
+  "name": "webdrive-js",
+  "version": "1.0.0",
+  "description": "training to use selenium webdriver js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anastasiya Kavalionak",
+  "license": "ISC",
+  "dependencies": {
+    "chromedriver": "^2.33.2",
+    "selenium-webdriver": "^3.6.0"
+  }
+}
